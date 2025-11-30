@@ -16,6 +16,7 @@ cd /Users/tristan/Check_attendance
 ```
 
 This script automatically:
+
 - Activates the correct conda environment
 - Verifies Python version
 - Launches Streamlit
@@ -58,17 +59,20 @@ streamlit run streamlit_app.py
 ### ✅ Improvements:
 
 1. **Clean Environment** - No more dependency conflicts
+
    - Python 3.11
    - NumPy 1.26.4 (not 2.x)
    - No OpenCV
    - No scikit-learn
 
 2. **Browser Camera** - Uses `st.camera_input` instead of OpenCV
+
    - No segmentation faults
    - Works on all platforms
    - More secure (browser-controlled)
 
 3. **Pure NumPy PCA** - No sklearn dependency
+
    - SVD-based dimensionality reduction
    - Fast and reliable
 
@@ -98,21 +102,27 @@ Press `Ctrl+C` in the terminal
 ## 🐛 Troubleshooting
 
 ### "ModuleNotFoundError: No module named 'plotly'"
+
 **Cause:** Running in wrong environment
 
 **Fix:** Use the `run_app.sh` script or make sure you activated `faceenv_cam`:
+
 ```bash
 conda activate faceenv_cam
 ```
 
 ### Camera not working
-**Fix:** 
+
+**Fix:**
+
 - Make sure you allowed camera access in your browser
 - Try Chrome or Firefox (Safari sometimes has issues)
 - Check that no other app is using the camera
 
 ### "FAISS index not found"
+
 **Fix:** Build the index first:
+
 ```bash
 conda activate faceenv_cam
 python facenet_app.py
@@ -135,6 +145,7 @@ python facenet_app.py
 ```
 
 **NOT installed (to avoid conflicts):**
+
 - ❌ opencv-python
 - ❌ scikit-learn
 - ❌ matplotlib
@@ -147,11 +158,13 @@ python facenet_app.py
 ### Why `faceenv_cam` instead of the old environment?
 
 The old environment had:
+
 - NumPy 2.x conflicting with older packages
 - OpenCV causing ABI conflicts
 - sklearn causing segmentation faults
 
 The new environment:
+
 - Uses stable NumPy 1.26.4
 - No OpenCV (uses Streamlit's camera)
 - No sklearn (uses pure NumPy)
@@ -184,15 +197,16 @@ Check_attendance/
 ## 🎉 You're All Set!
 
 Run the app with:
+
 ```bash
 ./run_app.sh
 ```
 
 Or manually:
+
 ```bash
 conda activate faceenv_cam
 streamlit run streamlit_app.py
 ```
 
 **Enjoy your face recognition system!** 🎭✨
-
